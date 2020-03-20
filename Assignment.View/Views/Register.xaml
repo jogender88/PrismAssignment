@@ -1,0 +1,77 @@
+﻿<Window x:Class="Assignment.View.Register"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        xmlns:xcts="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+        xmlns:vm="clr-namespace:Assignment.ViewModel;assembly=Assignment.ViewModel"
+        xmlns:local="clr-namespace:Assignment.View.Properties"
+        Title="MainWindow" Height="550" Width="800" Style="{StaticResource LayoutGridStyle}">
+    <Window.DataContext>
+        <vm:RegistrationViewModel/>
+    </Window.DataContext>
+    <Grid Margin="134,48,46,59" >
+        <TextBlock Style="{StaticResource Heading}" Height="35" HorizontalAlignment="Left" 
+                   Text="{x:Static local:Resource.UserRegistrationFormLabel}" Margin="100,0,0,0" VerticalAlignment="Top" Width="300"  FontSize="24"/>
+        <!--end Button as a Link button using style-->
+        <Grid Height="325" VerticalAlignment="Bottom" Margin="0,0,23,40" >
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Style="{StaticResource errorMsg}" Height="20" HorizontalAlignment="Left" Margin="67,0,0,0" 
+                       Name ="errormessage" Text="{Binding Path=ErrorMessage,Mode=TwoWay}" VerticalAlignment="Top" Width="368"  
+                       OpacityMask="Crimson" Foreground="#FFE5572C" />
+
+            <TextBlock Style="{StaticResource LabelStyle}" Margin="67,20,0,0" Name="textBlockFName" Text="{x:Static local:Resource.FirstNameLabel}" />
+            <TextBlock Style="{StaticResource LabelStyle}" Margin="67,45,0,0" Name="textBlockLName" Text="{x:Static local:Resource.LastNameLabel}" />
+
+            <TextBlock Style="{StaticResource LabelStyle}" Margin="67,70,0,0" Name="textBlockEmailId" Text="{x:Static local:Resource.EmailLabel}" />
+
+            <TextBlock Style="{StaticResource LabelStyle}" Margin="67,95,0,0" Name="textBlockGender" Text="{x:Static local:Resource.GenderLabel}" />
+
+            <TextBlock Style="{StaticResource LabelStyle}" Margin="67,120,0,0" Name="textBlockDOB" Text="{x:Static local:Resource.DOBLabel}" />
+
+            <TextBlock Style="{StaticResource LabelStyle}" Margin="67,145,0,0" Name="textBlockPassword" Text="{x:Static local:Resource.PasswordLabel}" />
+            <TextBlock Style="{StaticResource LabelStyle}" Margin="67,170,0,0" Name="textBlockConfirmPwd" Text="{x:Static local:Resource.ConfirmPasswordLabel}" />
+
+            <TextBox Style="{StaticResource TextBoxStyle}" Margin="183,20,0,0" Name="textBoxFName" MaxLength="20" Text="{Binding Path=FirstName,Mode=TwoWay}" />
+            <TextBlock Style="{StaticResource errorMsg}" Margin="67,20,0,0" Name="errorTextBlockFName" Text="{Binding Path=FNameError,Mode=TwoWay}" />
+
+            <TextBox Style="{StaticResource TextBoxStyle}" Margin="183,45,0,0" Name="textBoxLName" MaxLength="20" Text="{Binding Path=LastName,Mode=TwoWay}" />
+            <TextBlock Style="{StaticResource errorMsg}" Margin="67,45,0,0" Name="errorTextBlockLName" Text="{Binding Path=LNameError,Mode=TwoWay}" />
+
+            <TextBox Style="{StaticResource TextBoxStyle}" Margin="183,70,0,0" Name="textBoxEmail" Text="{Binding Path=EmailId,Mode=TwoWay}" />
+            <TextBlock Style="{StaticResource errorMsg}" Margin="67,70,0,0" Name="errorTextBlockEmailId" Text="{Binding Path=EmailError,Mode=TwoWay}" />
+
+            <xcts:WatermarkComboBox Height="20" Watermark="Please Select Gender.." HorizontalAlignment="Left" Margin="183,95,0,0" Name="Gender" VerticalAlignment="Top" Width="222"
+                      ItemsSource="{Binding Path=GenderCategory}" DisplayMemberPath="GenderType"
+                      SelectedValuePath="GenderType" SelectedValue="{Binding Path=GenderValue.GenderType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path=GenderValue,Mode=TwoWay}">
+            </xcts:WatermarkComboBox>
+            <TextBlock Style="{StaticResource errorMsg}" Margin="67,95,0,0" Name="errorTextBlockGender" Text="{Binding Path=GenderError,Mode=TwoWay}" />
+
+            <DatePicker Height="23" HorizontalAlignment="Left" Margin="183,120,0,0" Name="DatePickerDOB" SelectedDate="{Binding Path=DOB,UpdateSourceTrigger=PropertyChanged,StringFormat=dd.MM.yyyy}" VerticalAlignment="Top" Width="222" DisplayDate="01/01/1980" />
+            <TextBlock Style="{StaticResource errorMsg}" Margin="67,120,0,0" Text="{Binding Path=DOBError,Mode=TwoWay}" />
+
+            <!--For password-->
+            <TextBox Style="{StaticResource TextBoxStyle}" KeyUp="passwordConfirm_KeyUp" Margin="183,146,0,0" Name="password"  MaxLength="20" Text="{Binding Password}" />
+            <TextBlock Style="{StaticResource errorMsg}" Margin="67,145,0,0" Text="{Binding Path=PasswordError,Mode=TwoWay}" />
+
+            <TextBox Style="{StaticResource TextBoxStyle}" KeyUp="passwordConfirm_KeyUp" Margin="183,170,0,0" Name="passwordConfirm" MaxLength="20" Text="{Binding ConfirmPassword}"/>
+            <TextBlock Style="{StaticResource errorMsg}" Margin="7,170,0,0" Text="{Binding Path=ConfirmPasswordError,Mode=TwoWay}" />
+
+            <!--Buttons-->
+            <Button Style="{StaticResource submitbtn}" Content="Submit" Margin="183,195,0,0" Command="{Binding SubmitCommand}"/>
+            <Button Style="{StaticResource submitbtn}" Content="Reset" Margin="259,195,0,0" Command="{Binding ResetCommand}" />
+            <!--Button as a Link button using style-->
+            <TextBlock Height="50" HorizontalAlignment="Left" Margin="67,220,0,0"  VerticalAlignment="Top" FontSize="12" FontStyle="Italic" Padding="5">  
+           <TextBlock Text="{x:Static local:Resource.RegisterWindowTextForLoginInfo}"/>
+           <!--textblock as a Hyperlink.-->  
+            <TextBlock>  
+                 <Hyperlink Click="Login_Click" FontSize="14" FontStyle="Normal">Login</Hyperlink>  
+            </TextBlock>  
+            <!--end textblock as a hyperlink-->  
+            </TextBlock>
+        </Grid>
+    </Grid>
+</Window>

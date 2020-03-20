@@ -1,0 +1,10 @@
+D:\Projects\Assingment\APIModel\bin\Debug\netcoreapp3.1\APIModel.deps.json
+D:\Projects\Assingment\APIModel\bin\Debug\netcoreapp3.1\APIModel.dll
+D:\Projects\Assingment\APIModel\obj\Debug\netcoreapp3.1\APIModel.csprojAssemblyReference.cache
+D:\Projects\Assingment\APIModel\obj\Debug\netcoreapp3.1\APIModel.AssemblyInfoInputs.cache
+D:\Projects\Assingment\APIModel\obj\Debug\netcoreapp3.1\APIModel.AssemblyInfo.cs
+D:\Projects\Assingment\APIModel\bin\Debug\netcoreapp3.1\APIModel.runtimeconfig.json
+D:\Projects\Assingment\APIModel\bin\Debug\netcoreapp3.1\APIModel.runtimeconfig.dev.json
+D:\Projects\Assingment\APIModel\bin\Debug\netcoreapp3.1\APIModel.pdb
+D:\Projects\Assingment\APIModel\obj\Debug\netcoreapp3.1\APIModel.dll
+D:\Projects\Assingment\APIModel\obj\Debug\netcoreapp3.1\APIModel.pdb
